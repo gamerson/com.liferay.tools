@@ -1,0 +1,27 @@
+Bundle-Version:1.0.0.${tstamp}
+
+Bundle-Description: \
+ 	This bundle is the test bundle for SassCompiler project.
+
+Private-Package:  \
+	com.liferay.tools.sassc.test
+
+Test-Cases: ${test-cases}
+
+-includeresource: {readme.md}
+
+-buildpath: \
+	osgi.enroute.base.api;version=1.0,\
+	biz.aQute.junit,\
+	com.liferay.tools.sassc.api;version=latest
+
+-testpath: \
+	biz.aQute.junit
+
+-runbundles: \
+	com.liferay.tools.sassc.provider;version=latest,\
+	org.apache.felix.configadmin;version='[1.8.0,1.8.1)',\
+	org.apache.felix.metatype;version='[1.0.10,1.0.11)',\
+	org.apache.felix.scr;version='[1.8.2,1.8.3)'
+
+-runrequires: osgi.identity;filter:='(osgi.identity=com.liferay.tools.sassc.provider)'

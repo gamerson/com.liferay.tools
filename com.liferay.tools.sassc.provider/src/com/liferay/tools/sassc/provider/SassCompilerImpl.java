@@ -14,8 +14,15 @@ import sass.SassLibrary;
 import sass.SourceComments;
 import sass.sass_context;
 import sass.sass_file_context;
+import osgi.enroute.debug.api.Debug;
 
-@Component(name = "com.liferay.tools.sassc")
+@Component(
+		name = "com.liferay.tools.sassc",
+		property = {
+				Debug.COMMAND_SCOPE + "=test",
+				Debug.COMMAND_FUNCTION + "=sassc"
+		}
+)
 public class SassCompilerImpl implements SassCompiler {
 
 	static SassLibrary libsass = SassLibrary.INSTANCE;
@@ -103,6 +110,12 @@ public class SassCompilerImpl implements SassCompiler {
 			}
 		}
 	}
+
+	public String sassc(String input, String includePath, String imgPath)
+			throws SassCompilationException {
+		return compile(input, includePath, imgPath);
+	}
+
 
 	/**
 	 * converts a string to a pointer
