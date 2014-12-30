@@ -1,0 +1,8 @@
+language: java
+
+env:
+  - TERM=dumb
+
+install: ./gradlew --version
+
+script: ./gradlew --continue
