@@ -15,7 +15,10 @@ public class SasscTest {
     @Test
     public void testSassc() throws Exception {
     	Assert.assertNotNull(context);
+
     	SassCompiler sassc = getService(SassCompiler.class);
+
+
 		Assert.assertNotNull(sassc);
 
 		String expected = ".foo { background: white; } .foo .bar { margin-top: 10px; }";

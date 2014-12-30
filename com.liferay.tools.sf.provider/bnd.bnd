@@ -1,0 +1,25 @@
+Bundle-Version:					1.0.0.${tstamp}
+
+Bundle-Description:	\
+	A bundle with a sourceformatter provider.
+
+Private-Package:  \
+	com.liferay.tools.sf.provider
+
+Export-Package: \
+	com.liferay.tools.sf.api
+
+-buildpath: \
+	osgi.enroute.base.api;version=1.0,\
+	biz.aQute.junit,\
+	com.liferay.tools.sf.api;version=latest,\
+	com.liferay.portal:portal-service;version=7.0.0.SNAPSHOT
+
+-includeresource: \
+	{readme.md}
+
+-runrequires:  \
+	osgi.identity;filter:='(osgi.identity=com.liferay.tools.sf.provider)'
+
+-runbundles: \
+	${error;Resolve first}

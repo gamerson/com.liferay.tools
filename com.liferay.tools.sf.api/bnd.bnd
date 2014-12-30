@@ -1,0 +1,13 @@
+Bundle-Version:1.0.0.${tstamp}
+
+Bundle-Description: 				\
+	This is the sourceformatter API project
+
+Export-Package:  \
+	com.liferay.tools.sf.api;provide:=true
+
+Require-Capability: \
+	compile-only
+
+-buildpath: \
+	osgi.enroute.base.api;version=1.0

@@ -8,7 +8,8 @@ bnd-release	=	https://bndtools.ci.cloudbees.com/job/bnd.master/lastSuccessfulBui
 
 
 -pluginpath:\
-        ${build}/cache/biz.aQute.repository.jar;url=${bnd-release}/biz.aQute.repository/biz.aQute.repository-latest.jar
+        ${build}/cache/biz.aQute.repository.jar;url=${bnd-release}/biz.aQute.repository/biz.aQute.repository-latest.jar, \
+        ${build}/cache/biz.aQute.repository.aether.jar;url=${bnd-release}/biz.aQute.repository.aether/biz.aQute.repository.aether-latest.jar
 
 
 -plugin.enroute.wrapper: aQute.bnd.deployer.repository.wrapper.Plugin; \
@@ -24,10 +25,10 @@ bnd-release	=	https://bndtools.ci.cloudbees.com/job/bnd.master/lastSuccessfulBui
 
 -plugin.enroute.centralrepo = \
 	aQute.bnd.jpm.Repository; \
-	        includeStage	=       true; \
-	        name		=       Central; \
-	        location	=       ~/.bnd/shacache; \
-	        index		=       ${build}/repository.json; \
+	        includeStage		=       true; \
+	        name				=       Central; \
+	        location			=       ~/.bnd/shacache; \
+	        index				=       ${build}/repository.json; \
 	        depository.group	=		OSGi; \
     		depository.name		=		enRoute.rt
 
@@ -37,6 +38,10 @@ bnd-release	=	https://bndtools.ci.cloudbees.com/job/bnd.master/lastSuccessfulBui
 		local=${build}/release;\
 		pretty=true
 
+-plugin.enroute.liferaysnapshotsrepo = \
+	aQute.bnd.deployer.repository.aether.AetherRepository; \
+		name 	= 	Liferay Snapshots; \
+		url 	= 	https://repository.liferay.com/nexus/content/repositories/liferay-snapshots-ce/
 
 -releaserepo: 					Release
 javac.source: 					1.7

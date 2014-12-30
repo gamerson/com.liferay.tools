@@ -1,0 +1,8 @@
+[
+   { 
+   	  "comment":							"Factory configuration for Sf",
+      "service.factoryPid":					"com.liferay.tools.sf",
+      "service.pid":						"initial",
+      "name":								"SF"
+   }
+]

@@ -1,0 +1,12 @@
+#
+# SF APPLICATION DEBUG RUN SPECIFICATION
+#
+
+-include: ~com.liferay.tools.sf.bndrun
+
+-runrequires.debug:  ${debug-bundles}
+
+-runtrace: true
+
+-runbundles: \
+	${error;Resolve first}
