@@ -20,7 +20,7 @@ import osgi.enroute.debug.api.Debug;
 		name = "com.liferay.tools.sassc",
 		property = {
 				Debug.COMMAND_SCOPE + "=test",
-				Debug.COMMAND_FUNCTION + "=sassc"
+				Debug.COMMAND_FUNCTION + "=compile"
 		}
 )
 public class SassCompilerImpl implements SassCompiler {
@@ -110,12 +110,6 @@ public class SassCompilerImpl implements SassCompiler {
 			}
 		}
 	}
-
-	public String sassc(String input, String includePath, String imgPath)
-			throws SassCompilationException {
-		return compile(input, includePath, imgPath);
-	}
-
 
 	/**
 	 * converts a string to a pointer
