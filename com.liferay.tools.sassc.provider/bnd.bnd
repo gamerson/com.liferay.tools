@@ -1,0 +1,27 @@
+Bundle-Version:	1.0.0.${tstamp}
+Bundle-Description: This bundle provides the SassCompiler implementation
+
+Private-Package: \
+	com.liferay.tools.sassc.provider,\
+	com.ochafik.lang.jnaerator.runtime,\
+	com.ochafik.net,\
+	com.sun.jna.*,\
+	sass
+
+Export-Package: com.liferay.tools.sassc.api
+
+-buildpath: \
+	osgi.enroute.base.api;version=1.0,\
+	biz.aQute.junit,\
+	com.liferay.tools.sassc.api;version=latest,\
+	com.sun.jna,\
+	com.nativelibs4java__jnaerator-runtime
+
+-includeresource: {readme.md}, resources
+
+
+-runrequires:  \
+	osgi.identity;filter:='(osgi.identity=com.liferay.tools.sassc.provider)'
+
+-runbundles: \
+	${error;Resolve first}
