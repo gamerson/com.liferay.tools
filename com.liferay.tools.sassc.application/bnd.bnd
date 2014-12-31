@@ -2,9 +2,7 @@ Bundle-Version: 1.0.0.${tstamp}
 
 Bundle-Description: This is the sassc application bundle.
 
-Private-Package: \
-	com.liferay.tools.sassc.application,\
-	com.liferay.tools.sassc.api
+Private-Package: com.liferay.tools.sassc.application
 
 -includeresource: \
 	{readme.md}, \
