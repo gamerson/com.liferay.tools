@@ -1,8 +1,0 @@
-[
-   { 
-   	  "comment":							"Factory configuration for Sassc",
-      "service.factoryPid":					"com.liferay.tools.sassc",
-      "service.pid":						"initial",
-      "name":								"SASSC"
-   }
-]

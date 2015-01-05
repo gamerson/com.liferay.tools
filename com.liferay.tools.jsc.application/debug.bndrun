@@ -1,0 +1,12 @@
+#
+# JSC APPLICATION DEBUG RUN SPECIFICATION
+#
+
+-include: ~com.liferay.tools.jsc.bndrun
+
+-runrequires.debug:  ${debug-bundles}
+
+-runtrace: true
+
+-runbundles: \
+	${error;Resolve first}
