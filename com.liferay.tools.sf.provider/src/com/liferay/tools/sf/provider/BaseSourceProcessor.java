@@ -1,18 +1,4 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
-package com.liferay.portal.tools.sourceformatter;
+package com.liferay.tools.sf.provider;
 
 import com.liferay.portal.kernel.io.unsync.UnsyncBufferedReader;
 import com.liferay.portal.kernel.io.unsync.UnsyncStringReader;
@@ -28,8 +14,6 @@ import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.TextFormatter;
 import com.liferay.portal.kernel.util.Validator;
-import com.liferay.portal.util.FileImpl;
-import com.liferay.portal.xml.SAXReaderImpl;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -328,7 +312,7 @@ public abstract class BaseSourceProcessor implements SourceProcessor {
 			String fileName, String content, Pattern pattern)
 		throws IOException {
 
-		String fileExtension = fileUtil.getExtension(fileName);
+		String fileExtension = FileUtil.getExtension(fileName);
 
 		if (!portalSource || fileExtension.equals("vm")) {
 			return;
@@ -686,7 +670,7 @@ public abstract class BaseSourceProcessor implements SourceProcessor {
 
 		String absolutePath = getAbsolutePath(file);
 
-		String content = fileUtil.read(file);
+		String content = FileUtil.read(file);
 
 		String newContent = format(file, fileName, absolutePath, content);
 
@@ -731,7 +715,7 @@ public abstract class BaseSourceProcessor implements SourceProcessor {
 	}
 
 	protected String getAbsolutePath(File file) {
-		String absolutePath = fileUtil.getAbsolutePath(file);
+		String absolutePath = FileUtil.getAbsolutePath(file);
 
 		return StringUtil.replace(absolutePath, "/./", StringPool.SLASH);
 	}
@@ -782,7 +766,7 @@ public abstract class BaseSourceProcessor implements SourceProcessor {
 
 			File file = new File(basedir + fileName);
 
-			String content = fileUtil.read(file);
+			String content = FileUtil.read(file);
 
 			fileName = StringUtil.replace(
 				fileName, StringPool.BACK_SLASH, StringPool.SLASH);
@@ -814,7 +798,7 @@ public abstract class BaseSourceProcessor implements SourceProcessor {
 		File file = getFile(fileName, level);
 
 		if (file != null) {
-			String content = fileUtil.read(file);
+			String content = FileUtil.read(file);
 
 			if (Validator.isNotNull(content)) {
 				return content;
@@ -834,7 +818,7 @@ public abstract class BaseSourceProcessor implements SourceProcessor {
 				break;
 			}
 
-			String copyright = fileUtil.read(
+			String copyright = FileUtil.read(
 				absolutePath.substring(0, x + 1) + "copyright.txt");
 
 			if (Validator.isNotNull(copyright)) {
@@ -849,7 +833,7 @@ public abstract class BaseSourceProcessor implements SourceProcessor {
 
 	protected File getFile(String fileName, int level) {
 		for (int i = 0; i < level; i++) {
-			if (fileUtil.exists(fileName)) {
+			if (FileUtil.exists(fileName)) {
 				return new File(fileName);
 			}
 
@@ -1162,7 +1146,7 @@ public abstract class BaseSourceProcessor implements SourceProcessor {
 		}
 
 		if (_autoFix) {
-			fileUtil.write(file, newContent);
+			FileUtil.write(file, newContent);
 		}
 		else if (_firstSourceMismatchException == null) {
 			_firstSourceMismatchException = new SourceMismatchException(
@@ -1512,11 +1496,9 @@ public abstract class BaseSourceProcessor implements SourceProcessor {
 		"[a-z]+[-_a-zA-Z0-9]*");
 	protected static Pattern emptyCollectionPattern = Pattern.compile(
 		"Collections\\.EMPTY_(LIST|MAP|SET)");
-	protected static FileImpl fileUtil = FileImpl.getInstance();
 	protected static Pattern languageKeyPattern = Pattern.compile(
 		"LanguageUtil.(?:get|format)\\([^;%]+|Liferay.Language.get\\('([^']+)");
 	protected static boolean portalSource;
-	protected static SAXReaderImpl saxReaderUtil = SAXReaderImpl.getInstance();
 	protected static Pattern sessionKeyPattern = Pattern.compile(
 		"SessionErrors.(?:add|contains|get)\\([^;%&|!]+|".concat(
 			"SessionMessages.(?:add|contains|get)\\([^;%&|!]+"),

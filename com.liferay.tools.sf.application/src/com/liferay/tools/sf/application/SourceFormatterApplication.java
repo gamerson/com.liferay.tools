@@ -19,7 +19,7 @@ public class SourceFormatterApplication {
 
 	private SourceFormatter sf;
 
-	public void format() throws Exception {
+	public void format() throws Throwable {
 		sf.format();
 	}
 

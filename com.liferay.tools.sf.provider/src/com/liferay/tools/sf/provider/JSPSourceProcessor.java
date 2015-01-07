@@ -1,22 +1,9 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
-package com.liferay.portal.tools.sourceformatter;
+package com.liferay.tools.sf.provider;
 
 import com.liferay.portal.kernel.io.unsync.UnsyncBufferedReader;
 import com.liferay.portal.kernel.io.unsync.UnsyncStringReader;
 import com.liferay.portal.kernel.util.CharPool;
+import com.liferay.portal.kernel.util.FileUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -495,7 +482,7 @@ public class JSPSourceProcessor extends BaseSourceProcessor {
 
 			String absolutePath = getAbsolutePath(file);
 
-			String content = fileUtil.read(file);
+			String content = FileUtil.read(file);
 
 			Matcher matcher = pattern.matcher(content);
 
@@ -1406,7 +1393,7 @@ public class JSPSourceProcessor extends BaseSourceProcessor {
 			if (commonInitFileContent == null) {
 				commonInitFile = new File(commonInitFileName);
 
-				commonInitFileContent = fileUtil.read(commonInitFile);
+				commonInitFileContent = FileUtil.read(commonInitFile);
 
 				x = commonInitFileContent.indexOf("<%@ page import");
 			}
@@ -1417,7 +1404,7 @@ public class JSPSourceProcessor extends BaseSourceProcessor {
 		}
 
 		if (commonInitFileContent != null) {
-			fileUtil.write(commonInitFile, commonInitFileContent);
+			FileUtil.write(commonInitFile, commonInitFileContent);
 
 			_jspContents.put(commonInitFileName, commonInitFileContent);
 		}
@@ -1507,9 +1494,6 @@ public class JSPSourceProcessor extends BaseSourceProcessor {
 		new HashMap<String, Integer>();
 	private Pattern _importsPattern = Pattern.compile("page import=\"(.+)\"");
 	private Set<String> _includeFileNames = new HashSet<String>();
-	private Pattern _javaClassPattern = Pattern.compile(
-		"\n(private|protected|public).* class ([A-Za-z0-9]+) " +
-			"([\\s\\S]*?)\n\\}\n");
 	private Map<String, String> _jspContents = new HashMap<String, String>();
 	private Pattern _jspImportPattern = Pattern.compile(
 		"(<.*\n*page.import=\".*>\n*)+", Pattern.MULTILINE);
@@ -1538,5 +1522,9 @@ public class JSPSourceProcessor extends BaseSourceProcessor {
 	private String _utilTaglibDirName;
 	private Pattern _xssPattern = Pattern.compile(
 		"\\s+([^\\s]+)\\s*=\\s*(Bean)?ParamUtil\\.getString\\(");
+
+	private Pattern _javaClassPattern = Pattern.compile(
+		"\n(private|protected|public).* class ([A-Za-z0-9]+) " +
+			"([\\s\\S]*?)\n\\}\n");
 
 }
