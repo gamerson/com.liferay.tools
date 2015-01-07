@@ -13,7 +13,9 @@ Export-Package: \
 	osgi.enroute.base.api;version=1.0,\
 	biz.aQute.junit,\
 	com.liferay.tools.sf.api;version=latest,\
-	com.liferay.portal:portal-service;version=7.0.0.SNAPSHOT
+	com.liferay.portal:portal-service;version=7.0.0.SNAPSHOT,\
+	org.apache.ant__ant,\
+	com.thoughtworks.qdox__qdox
 
 -includeresource: \
 	{readme.md}
