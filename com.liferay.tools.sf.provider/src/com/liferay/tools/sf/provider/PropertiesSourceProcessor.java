@@ -69,7 +69,15 @@ public class PropertiesSourceProcessor extends BaseSourceProcessor {
 
 	protected String formatPortalPortalProperties() throws Exception {
 		if (!portalSource) {
-			return ContentUtil.get("portal.properties");
+			try {
+				return StringUtil.read(
+					PropertiesSourceProcessor.class.getClassLoader(),
+					"portal.properties");
+			}
+			catch (IOException ioe) {
+			}
+
+			return null;
 		}
 
 		String fileName = "portal-impl/src/portal.properties";
