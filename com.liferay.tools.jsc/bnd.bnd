@@ -1,0 +1,26 @@
+Bundle-Version:	1.0.0.${tstamp}
+
+Bundle-Description: This bundle provides the Java SassCompiler Library
+
+Private-Package: \
+	com.liferay.tools.jsc,\
+	com.ochafik.io,\
+	com.ochafik.lang,\
+	com.ochafik.lang.jnaerator.runtime,\
+	com.ochafik.lang.reflect,\
+	com.ochafik.net;-split-package:=merge-first,\
+	com.ochafik.util.listenable,\
+	com.ochafik.util.progress,\
+	com.ochafik.util.string,\
+	com.sun.jna.*,\
+	sass
+
+Export-Package: com.liferay.tools.jsc
+
+-buildpath: \
+	biz.aQute.junit,\
+	com.sun.jna,\
+	com.nativelibs4java__jnaerator-runtime,\
+	com.nativelibs4java__ochafik-util
+
+-includeresource: {readme.md}, resources

@@ -1,8 +1,0 @@
-[
-   {
-   	  "comment":							"Factory configuration for Jsc",
-      "service.factoryPid":					"com.liferay.tools.jsc",
-      "service.pid":						"initial",
-      "name":								"JSC"
-   }
-]
