@@ -23,4 +23,4 @@ Export-Package: com.liferay.tools.jsc
 	com.nativelibs4java__jnaerator-runtime,\
 	com.nativelibs4java__ochafik-util
 
--includeresource: {readme.md}, resources
+-includeresource: resources
